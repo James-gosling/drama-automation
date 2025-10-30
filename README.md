@@ -36,10 +36,9 @@ Drama Automation is a Python-based toolkit that streamlines the creation of dram
    pip install -r requirements.txt
    ```
 
-3. **Set up your environment** (optional)
+3. **Verify installation**
    ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
+   python -c "import moviepy, gtts; print('Dependencies installed successfully!')"
    ```
 
 ### Using Google Colab
@@ -51,42 +50,36 @@ Drama Automation is a Python-based toolkit that streamlines the creation of dram
 
 ## 📖 Usage
 
-### Basic Usage
-
-```python
-from drama_automation import DramaVideoCreator
-
-# Initialize the creator
-creator = DramaVideoCreator()
-
-# Create a video from a script
-creator.create_video(
-    script="Your dramatic dialogue here...",
-    output_path="output/videos/my_drama.mp4",
-    voice="en-US-female",
-    background="assets/images/background.jpg"
-)
-```
-
 ### Using Notebooks
 
+The primary way to use this project is through the interactive Jupyter notebooks:
+
 1. Navigate to the `/notebooks` directory
-2. Open `drama_video_creator.ipynb`
-3. Follow the step-by-step instructions
-4. Customize parameters as needed
+2. Open `drama_video_creator.ipynb` in Jupyter or Google Colab
+3. Follow the step-by-step instructions in the notebook
+4. Customize parameters as needed (voice, background, effects)
 5. Run all cells to generate your video
 
-### Batch Processing
+### Example Workflow
 
 ```python
-from drama_automation import BatchProcessor
+# Example code structure (to be implemented in notebooks)
 
-# Process multiple scripts
-processor = BatchProcessor()
-processor.process_directory(
-    input_dir="scripts/",
-    output_dir="output/videos/"
-)
+# 1. Load or create your script
+script = """
+[Character A]: I can't believe you did this!
+[Character B]: I had no choice...
+"""
+
+# 2. Generate TTS audio using gTTS
+from gtts import gTTS
+tts = gTTS(text=script, lang='en')
+tts.save("output/audio/dialogue.mp3")
+
+# 3. Create video using MoviePy
+from moviepy.editor import *
+# Combine audio, background, and text overlays
+# Export final video to output/videos/
 ```
 
 ## 📁 Project Structure
@@ -131,7 +124,11 @@ drama-automation/
 
 ## ⚙️ Configuration
 
-Create a `.env` file in the root directory:
+You can configure the automation by modifying parameters directly in the notebooks or by creating environment variables:
+
+### Environment Variables (Optional)
+
+Create a `.env` file in the root directory for custom settings:
 
 ```env
 # TTS Settings
@@ -148,6 +145,14 @@ VIDEO_FPS=30
 OUTPUT_FORMAT=mp4
 OUTPUT_QUALITY=high
 ```
+
+### Notebook Parameters
+
+Most settings can be configured directly in the notebook cells:
+- Voice selection and language
+- Video dimensions and quality
+- Background images and music
+- Text overlay styles and animations
 
 ## 🛠️ Advanced Features
 
