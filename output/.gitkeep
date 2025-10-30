@@ -1,0 +1,16 @@
+# Output Directory
+
+This directory stores generated drama videos and intermediate files.
+
+## Contents
+
+Generated files will include:
+- **videos/**: Final rendered drama videos
+- **audio/**: Generated TTS audio files
+- **previews/**: Preview images and thumbnails
+- **logs/**: Processing logs and metadata
+
+## Note
+
+Files in this directory are not tracked by git (see `.gitignore`). 
+This keeps the repository clean and avoids large file storage issues.
